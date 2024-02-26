@@ -78,12 +78,19 @@ const App: React.FC = () => {
 
   // 儲存 Save & 驗證是否為空
   const handleSave = async () => {
+    const isEditing = records.some((record) => record.isEditing);
+
+    // 如果沒有紀錄正在編輯，也會顯示錯誤訊息
+    if (isEditing) {
+      showNotification('請完成編輯並按下 Save', 'error');
+      return;
+    }
     try {
       const isEmptyField = records.some(
         (record) =>
           !record.Name ||
           !record.DateOfBirth ||
-          !record.Salary ||
+          record.Salary == null ||
           !record.Address,
       );
 

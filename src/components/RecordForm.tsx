@@ -9,6 +9,22 @@ type RecordFormProps<T extends Record<string, unknown>> = {
   onDelete: () => void;
 };
 
+function formatDate(dateString: string) {
+  if (!dateString || new Date(dateString).toString() === 'Invalid Date') {
+    return '';
+  }
+
+  const date = new Date(dateString);
+  const year = date.getFullYear();
+  let month = '' + (date.getMonth() + 1);
+  let day = '' + date.getDate();
+
+  if (month.length < 2) month = '0' + month;
+  if (day.length < 2) day = '0' + day;
+
+  return [year, month, day].join('-');
+}
+
 const RecordForm = <T extends Record<string, unknown>>({
   record,
   onInputChange,
@@ -30,7 +46,7 @@ const RecordForm = <T extends Record<string, unknown>>({
       <td data-label="Date Of Birth">
         <input
           type="date"
-          value={record['DateOfBirth'] as string | undefined}
+          value={formatDate(record.DateOfBirth as string)}
           onChange={(e) => onInputChange(e, 'DateOfBirth')}
           readOnly={!record.isEditing}
           required
