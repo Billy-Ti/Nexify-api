@@ -1,0 +1,151 @@
+body {
+  background-color: #eee;
+}
+.container {
+  max-width: 1296px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.button-group {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #ddd;
+}
+
+.add-btn,
+.save-btn,
+.update-btn {
+  color: white;
+}
+
+.add-btn {
+  background-color: blue;
+}
+
+.save-btn {
+  background-color: green;
+}
+
+.update-btn {
+  background-color: red;
+}
+
+.btn {
+  margin-right: 10px;
+}
+
+.btn-edit:hover {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+input:focus {
+  outline: none;
+}
+
+/* RWD (Responsive Web Design) for mobile devices */
+@media screen and (max-width: 767px) {
+  .container {
+    padding: 0 10px;
+  }
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+
+  .add-btn,
+  .save-btn,
+  .update-btn {
+    width: 80%;
+  }
+
+  button {
+    margin-bottom: 10px;
+  }
+  input {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    border: 1px solid #ccc;
+  }
+
+  td {
+    position: relative;
+    padding-left: 40%;
+    padding-right: 10px;
+    text-align: left;
+  }
+
+  td:before {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 30%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+    content: attr(data-label);
+  }
+}
+
+@media screen and (max-width: 567px) {
+  .add-btn,
+  .save-btn,
+  .update-btn {
+    width: 100%;
+  }
+  td:before {
+    top: 12px;
+    left: 12px;
+  }
+}
